@@ -27,8 +27,8 @@
             overflow: hidden;
             white-space: nowrap;
             height: 1.5em;
-            margin-top: 60px; /* Jarak dari atas */
-            margin-bottom: 30px; /* Jarak antara judul dan list */
+            margin-top: 60px;
+            margin-bottom: 30px;
             text-align: center;
         }
 
@@ -52,11 +52,13 @@
             margin: 0;
             text-align: left;
             width: 80%; /* Menyesuaikan dengan lebar layar */
-            max-width: 600px; /* Maksimal lebar list */
+            /* max-width: 600px; */ /* Maksimal lebar list, bisa dihapus */
+            word-wrap: break-word; /* Memungkinkan pemisahan kata agar tidak membuat baris baru */
         }
 
         li {
             margin: 5px 0;
+            word-break: break-word; /* Pecah kata hanya jika terlalu panjang */
         }
 
         a {
@@ -86,7 +88,7 @@
     </div>
     <ul id="services">
         <li><a href="https://s.id/sumcaan">> Sumcaan</a></li>
-        <li><a href="s.id/gtrml">> MLBB Rank Guess (in development)</a></li>
+        <li><a href="s.id/gtrml">> MLBB Rank Guess (development)</a></li>
     </ul>
 
     <script>
@@ -105,7 +107,7 @@
                     setTimeout(typeTitle, 100);
                 } else {
                     typing = false;
-                    setTimeout(typeTitle, 1000);  // Jeda setelah selesai mengetik
+                    setTimeout(typeTitle, 1000);
                 }
             } else {
                 if (charIndex > 0) {
@@ -114,8 +116,8 @@
                     setTimeout(typeTitle, 50);
                 } else {
                     typing = true;
-                    titleIndex = (titleIndex + 1) % titles.length;  // Ganti ke judul berikutnya
-                    setTimeout(typeTitle, 500);  // Jeda sebelum mulai mengetik judul baru
+                    titleIndex = (titleIndex + 1) % titles.length;
+                    setTimeout(typeTitle, 500);
                 }
             }
         }
