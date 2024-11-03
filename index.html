@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supparries</title>
+    <style>
+        /* Mengatur tampilan halaman */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Line Seed', monospace;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Judul dengan animasi teks */
+        #title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            white-space: nowrap;
+            height: 1.5em;
+            margin-top: 60px; /* Jarak dari atas */
+            margin-bottom: 30px; /* Jarak antara judul dan list */
+            text-align: center;
+        }
+
+        #title {
+            color: #00ff00;
+            font-size: 1.2em;
+            border-right: 0.1em solid #00ff00;
+            animation: blink 0.7s step-end infinite alternate;
+        }
+
+        @keyframes blink {
+            from { border-right-color: transparent; }
+            to { border-right-color: #00ff00; }
+        }
+
+        /* List layanan */
+        #services {
+            list-style-type: none;
+            padding: 0;
+            font-size: 1em;
+            margin: 0;
+            text-align: left;
+            width: 80%; /* Menyesuaikan dengan lebar layar */
+            max-width: 600px; /* Maksimal lebar list */
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #00ff00;
+            text-decoration: underline;
+        }
+
+        /* Responsivitas */
+        @media (max-width: 600px) {
+            #title {
+                font-size: 1em;
+            }
+            #services {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="title-container">
+        <span id="title"></span>
+    </div>
+    <ul id="services">
+        <li><a href="https://s.id/sumcaan">> Desain Grafis</a></li>
+        <li><a href="#develop>>MLBB Rank Guess (in development)</a></li>
+        <li>make with ChatGPT</li>
+    </ul>
+
+    <script>
+        // Animasi teks untuk judul
+        const titleElement = document.getElementById('title');
+        const titles = ['Supparries', 'Support Carries', 'SC'];
+        let titleIndex = 0;
+        let charIndex = 0;
+        let typing = true;
+
+        function typeTitle() {
+            if (typing) {
+                if (charIndex < titles[titleIndex].length) {
+                    titleElement.textContent += titles[titleIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeTitle, 100);
+                } else {
+                    typing = false;
+                    setTimeout(typeTitle, 1000);  // Jeda setelah selesai mengetik
+                }
+            } else {
+                if (charIndex > 0) {
+                    titleElement.textContent = titleElement.textContent.slice(0, -1);
+                    charIndex--;
+                    setTimeout(typeTitle, 50);
+                } else {
+                    typing = true;
+                    titleIndex = (titleIndex + 1) % titles.length;  // Ganti ke judul berikutnya
+                    setTimeout(typeTitle, 500);  // Jeda sebelum mulai mengetik judul baru
+                }
+            }
+        }
+
+        // Mulai animasi pertama kali
+        typeTitle();
+    </script>
+</body>
+</html>
