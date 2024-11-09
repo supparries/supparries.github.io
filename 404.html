@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support Carries tools not found 💔.">
+    <title>404 - Page Not Found</title>
+    <style>
+        /* Mengatur tampilan halaman */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Line Seed', monospace;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Judul dengan animasi teks */
+        #title-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            white-space: nowrap;
+            height: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        #title {
+            color: #00ff00;
+            font-size: 1.2em;
+            border-right: 0.1em solid #00ff00;
+            animation: blink 0.7s step-end infinite alternate;
+        }
+
+        @keyframes blink {
+            from { border-right-color: transparent; }
+            to { border-right-color: #00ff00; }
+        }
+
+        /* List layanan */
+        #services {
+            list-style-type: none;
+            padding: 0;
+            font-size: 1em;
+            margin: 0;
+            margin-top: 15px;
+            text-align: left;
+            width: 90%;
+            padding-left: 5%;
+            word-wrap: break-word;
+        }
+
+        li {
+            margin: 5px 0;
+            word-break: break-word;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #00ff00;
+            text-decoration: underline;
+        }
+
+        /* Responsivitas */
+        @media (max-width: 600px) {
+            #title {
+                font-size: 1em;
+            }
+            #services {
+                font-size: 0.85em;
+                width: 95%;
+                padding-left: 3%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="title-container">
+        <span id="title"></span>
+    </div>
+    <ul id="services">
+        <li><a href="https://s.id/supparries">> Back to home page</a></li>
+    </ul>
+
+    <script>
+        // Animasi teks untuk judul
+        const titleElement = document.getElementById('title');
+        const titles = ['404', 'Page Not Found', '404 - Page Not Found'];
+        let titleIndex = 0;
+        let charIndex = 0;
+        let typing = true;
+
+        function typeTitle() {
+            if (typing) {
+                if (charIndex < titles[titleIndex].length) {
+                    titleElement.textContent += titles[titleIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeTitle, 100);
+                } else {
+                    typing = false;
+                    setTimeout(typeTitle, 1000);
+                }
+            } else {
+                if (charIndex > 0) {
+                    titleElement.textContent = titleElement.textContent.slice(0, -1);
+                    charIndex--;
+                    setTimeout(typeTitle, 50);
+                } else {
+                    typing = true;
+                    titleIndex = (titleIndex + 1) % titles.length;
+                    setTimeout(typeTitle, 500);
+                }
+            }
+        }
+
+        // Mulai animasi pertama kali
+        typeTitle();
+    </script>
+</body>
+</html>
